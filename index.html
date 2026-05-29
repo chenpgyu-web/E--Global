@@ -227,6 +227,13 @@
         border: 1px solid #e9f0fb;
         border-radius: 18px;
         padding: 18px;
+        box-shadow: 0 8px 20px rgba(18, 41, 74, 0.04);
+        transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .panel:hover {
+        border-color: #d9e6fb;
+        box-shadow: 0 14px 28px rgba(18, 41, 74, 0.08);
       }
 
       .sidebar-item {
@@ -235,6 +242,23 @@
         margin-bottom: 8px;
         font-size: 14px;
         color: #7084a2;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.18s ease, color 0.18s ease;
+      }
+
+      .sidebar-item::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #aec4e8;
+      }
+
+      .sidebar-item:hover {
+        background: #eef4ff;
+        color: #334d72;
       }
 
       .sidebar-item.active {
@@ -259,6 +283,46 @@
         border-radius: 16px;
         padding: 14px;
         margin-bottom: 18px;
+      }
+
+      .buyer-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .avatar-stack {
+        display: flex;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        margin-left: -6px;
+        display: grid;
+        place-items: center;
+        font-size: 10px;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .avatar:first-child {
+        margin-left: 0;
+      }
+
+      .avatar.a {
+        background: #2b6aed;
+      }
+
+      .avatar.b {
+        background: #5b8df2;
+      }
+
+      .avatar.c {
+        background: #7ca6f6;
       }
 
       .buyer-card h4 {
@@ -304,11 +368,38 @@
         color: #6e82a0;
       }
 
+      .hero-timeline .stages span {
+        position: relative;
+        padding-top: 14px;
+        font-weight: 500;
+      }
+
+      .hero-timeline .stages span::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #a8c2eb;
+      }
+
+      .hero-timeline .stages span.active {
+        color: #1f3b65;
+      }
+
+      .hero-timeline .stages span.active::before {
+        background: #2e6ff2;
+        box-shadow: 0 0 0 4px rgba(46, 111, 242, 0.14);
+      }
+
       .progress-card {
         background: #fff;
         border: 1px solid #e7eef9;
         border-radius: 16px;
         padding: 14px;
+        margin-bottom: 14px;
       }
 
       .progress-head {
@@ -338,12 +429,81 @@
         font-size: 12px;
       }
 
+      .activity h4 {
+        margin-bottom: 14px;
+        font-weight: 600;
+      }
+
       .activity .item {
         border-left: 2px solid #c4d9ff;
-        padding: 0 0 11px 12px;
+        padding: 2px 0 11px 12px;
         margin-left: 6px;
         margin-bottom: 12px;
         color: #5f7596;
+        transition: color 0.18s ease, border-color 0.18s ease;
+      }
+
+      .activity .item:hover {
+        color: #2e476e;
+        border-left-color: #8fb2f2;
+      }
+
+      .doc-list {
+        background: #fff;
+        border: 1px solid #e7eef9;
+        border-radius: 16px;
+        padding: 12px;
+      }
+
+      .doc-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 8px;
+        border-radius: 10px;
+        transition: background 0.18s ease;
+      }
+
+      .doc-item:hover {
+        background: #f1f6ff;
+      }
+
+      .doc-main {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .doc-icon {
+        width: 22px;
+        height: 26px;
+        border-radius: 6px;
+        background: linear-gradient(180deg, #dfeaff, #c9dcfb);
+        position: relative;
+      }
+
+      .doc-icon::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 5px;
+        width: 12px;
+        height: 2px;
+        background: #86a7de;
+        box-shadow: 0 5px 0 #a2bce8, 0 10px 0 #b4c9ee;
+      }
+
+      .doc-item strong {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #2b456e;
+      }
+
+      .doc-item span {
+        font-size: 11px;
+        color: #7890b0;
       }
 
       .grid-4,
@@ -613,15 +773,25 @@
             <section class="panel" id="workspace">
               <h3>Buyer Workspace</h3>
               <div class="buyer-card">
-                <h4>Nordline Home GmbH</h4>
-                <span>In Production</span>
+                <div>
+                  <h4>Nordline Home GmbH</h4>
+                  <span>Purchase Order #NL-2407</span>
+                </div>
+                <div class="buyer-meta">
+                  <div class="avatar-stack">
+                    <div class="avatar a">N</div>
+                    <div class="avatar b">L</div>
+                    <div class="avatar c">E</div>
+                  </div>
+                  <span>In Production</span>
+                </div>
               </div>
               <div class="hero-timeline">
                 <div class="line"></div>
                 <div class="stages">
-                  <span>Quotation</span>
-                  <span>Production</span>
-                  <span>QC</span>
+                  <span class="active">Quotation</span>
+                  <span class="active">Production</span>
+                  <span class="active">QC</span>
                   <span>Shipment</span>
                 </div>
               </div>
@@ -631,6 +801,28 @@
                   <span>68%</span>
                 </div>
                 <div class="progress-bar"><span></span></div>
+              </div>
+              <div class="doc-list">
+                <div class="doc-item">
+                  <div class="doc-main">
+                    <div class="doc-icon"></div>
+                    <div>
+                      <strong>Inspection Report.pdf</strong>
+                      <span>Shared 12m ago</span>
+                    </div>
+                  </div>
+                  <span>2.4 MB</span>
+                </div>
+                <div class="doc-item">
+                  <div class="doc-main">
+                    <div class="doc-icon"></div>
+                    <div>
+                      <strong>Packing List.xlsx</strong>
+                      <span>Updated today</span>
+                    </div>
+                  </div>
+                  <span>890 KB</span>
+                </div>
               </div>
             </section>
             <aside class="panel activity">
