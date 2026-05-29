@@ -16,18 +16,18 @@
     />
     <style>
       :root {
-        --bg: #f5f9ff;
+        --bg: #f4f8ff;
         --panel: #ffffff;
-        --panel-soft: #f8fbff;
-        --line: #d9e5f7;
-        --text: #0f223e;
-        --muted: #5b6f8f;
+        --panel-soft: #f7faff;
+        --line: #dbe7f8;
+        --text: #0f213d;
+        --muted: #647897;
         --navy: #132a4f;
         --navy-strong: #0d1f3e;
         --blue: #2e6ff2;
         --blue-soft: #e8f0ff;
-        --shadow: 0 20px 40px rgba(15, 34, 62, 0.08);
-        --radius: 18px;
+        --shadow: 0 22px 50px rgba(15, 34, 62, 0.08);
+        --radius: 20px;
       }
 
       * {
@@ -41,8 +41,9 @@
         font-family: "Manrope", sans-serif;
         color: var(--text);
         background:
-          radial-gradient(circle at 10% 10%, #e8f1ff 0%, transparent 40%),
-          radial-gradient(circle at 90% 20%, #e5efff 0%, transparent 35%),
+          radial-gradient(circle at 8% 10%, #e8f1ff 0%, transparent 42%),
+          radial-gradient(circle at 92% 16%, #e7f0ff 0%, transparent 38%),
+          linear-gradient(180deg, #f8fbff 0%, #f4f8ff 56%, #f6f9ff 100%),
           var(--bg);
       }
 
@@ -52,7 +53,7 @@
       }
 
       .section {
-        padding: 90px 0;
+        padding: 96px 0;
       }
 
       .badge {
@@ -83,6 +84,7 @@
         font-size: clamp(2rem, 2.8vw, 2.8rem);
         letter-spacing: -0.03em;
         margin-bottom: 14px;
+        line-height: 1.16;
       }
 
       .section-subtitle {
@@ -95,8 +97,8 @@
         top: 0;
         z-index: 50;
         backdrop-filter: blur(10px);
-        background: rgba(245, 249, 255, 0.78);
-        border-bottom: 1px solid rgba(217, 229, 247, 0.6);
+        background: rgba(247, 251, 255, 0.8);
+        border-bottom: 1px solid rgba(217, 229, 247, 0.55);
       }
 
       nav {
@@ -132,6 +134,11 @@
         color: var(--muted);
         font-weight: 600;
         font-size: 14px;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: #28466f;
       }
 
       .btn {
@@ -148,6 +155,12 @@
         color: #fff;
         background: linear-gradient(180deg, var(--blue), #265cd1);
         box-shadow: 0 10px 24px rgba(46, 111, 242, 0.35);
+        transition: transform 0.16s ease, box-shadow 0.2s ease;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 28px rgba(46, 111, 242, 0.34);
       }
 
       .hero {
@@ -211,7 +224,7 @@
         border: 1px solid #e4ecfa;
         background: var(--panel);
         border-radius: 26px;
-        box-shadow: 0 24px 54px rgba(14, 33, 60, 0.09);
+        box-shadow: 0 28px 62px rgba(14, 33, 60, 0.1);
         padding: 18px;
       }
 
@@ -223,7 +236,7 @@
       }
 
       .panel {
-        background: #f8fbff;
+        background: linear-gradient(180deg, #fbfdff, #f7faff);
         border: 1px solid #e9f0fb;
         border-radius: 18px;
         padding: 18px;
@@ -279,10 +292,11 @@
         align-items: center;
         gap: 10px;
         background: #fff;
-        border: 1px solid #e7eef9;
+        border: 1px solid #e4ecf8;
         border-radius: 16px;
         padding: 14px;
         margin-bottom: 18px;
+        box-shadow: 0 6px 14px rgba(20, 43, 77, 0.04);
       }
 
       .buyer-meta {
@@ -396,10 +410,11 @@
 
       .progress-card {
         background: #fff;
-        border: 1px solid #e7eef9;
+        border: 1px solid #e4ecf8;
         border-radius: 16px;
         padding: 14px;
         margin-bottom: 14px;
+        box-shadow: 0 6px 14px rgba(20, 43, 77, 0.04);
       }
 
       .progress-head {
@@ -450,9 +465,10 @@
 
       .doc-list {
         background: #fff;
-        border: 1px solid #e7eef9;
+        border: 1px solid #e4ecf8;
         border-radius: 16px;
         padding: 12px;
+        box-shadow: 0 6px 14px rgba(20, 43, 77, 0.04);
       }
 
       .doc-item {
@@ -525,8 +541,15 @@
         background: #fff;
         border: 1px solid var(--line);
         border-radius: var(--radius);
-        padding: 22px;
-        box-shadow: 0 10px 28px rgba(15, 34, 62, 0.05);
+        padding: 24px;
+        box-shadow: 0 14px 28px rgba(15, 34, 62, 0.05);
+        transition: transform 0.18s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: #d4e3f9;
+        box-shadow: 0 20px 34px rgba(15, 34, 62, 0.08);
       }
 
       .icon {
@@ -642,10 +665,10 @@
       .dark-cta {
         background: linear-gradient(145deg, #0f223f, #0c1a31);
         color: #fff;
-        border-radius: 24px;
+        border-radius: 28px;
         padding: 56px 40px;
         text-align: center;
-        box-shadow: var(--shadow);
+        box-shadow: 0 24px 60px rgba(10, 22, 43, 0.34);
       }
 
       .dark-cta p {
