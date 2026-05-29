@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Global | Buyer Trust Workspace</title>
+    <meta
+      name="description"
+      content="E-Global is a lightweight Buyer Trust Workspace for Chinese SME exporters to centralize buyer communication, share structured order visibility, and improve trust."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f9ff;
+        --panel: #ffffff;
+        --panel-soft: #f8fbff;
+        --line: #d9e5f7;
+        --text: #0f223e;
+        --muted: #5b6f8f;
+        --navy: #132a4f;
+        --navy-strong: #0d1f3e;
+        --blue: #2e6ff2;
+        --blue-soft: #e8f0ff;
+        --shadow: 0 20px 40px rgba(15, 34, 62, 0.08);
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Manrope", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 10%, #e8f1ff 0%, transparent 40%),
+          radial-gradient(circle at 90% 20%, #e5efff 0%, transparent 35%),
+          var(--bg);
+      }
+
+      .container {
+        width: min(1140px, 92vw);
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 2.8vw, 2.8rem);
+        letter-spacing: -0.03em;
+        margin-bottom: 14px;
+      }
+
+      .section-subtitle {
+        max-width: 700px;
+        font-size: 1.05rem;
+      }
+
+      .nav-wrap {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(10px);
+        background: rgba(245, 249, 255, 0.78);
+        border-bottom: 1px solid rgba(217, 229, 247, 0.6);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 74px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .logo-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: linear-gradient(135deg, #1c3f74, #2e6ff2);
+        box-shadow: 0 8px 20px rgba(46, 111, 242, 0.3);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .btn {
+        border: 0;
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(180deg, var(--blue), #265cd1);
+        box-shadow: 0 10px 24px rgba(46, 111, 242, 0.35);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1.15fr;
+        gap: 34px;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+        margin: 18px 0;
+      }
+
+      .hero p {
+        font-size: 1.08rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .micro {
+        font-size: 0.94rem;
+      }
+
+      .trust-list {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 14px;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--text);
+      }
+
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #3e80ff;
+      }
+
+      .mockup {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: 14px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: 180px 1fr 210px;
+        gap: 14px;
+        min-height: 460px;
+      }
+
+      .panel {
+        background: var(--panel-soft);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      .sidebar-item {
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .sidebar-item.active {
+        background: #eaf2ff;
+        color: var(--navy);
+        font-weight: 700;
+      }
+
+      .workspace h3 {
+        margin-bottom: 8px;
+      }
+
+      .status-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 10px 12px;
+        margin-bottom: 12px;
+        font-size: 13px;
+      }
+
+      .mile-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .mile {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+        padding: 10px;
+        font-size: 12px;
+      }
+
+      .mile strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .activity {
+        font-size: 12px;
+      }
+
+      .activity .item {
+        border-left: 2px solid #aac6ff;
+        padding: 0 0 12px 12px;
+        margin-left: 6px;
+        margin-bottom: 10px;
+      }
+
+      .grid-4,
+      .grid-5 {
+        display: grid;
+        gap: 16px;
+        margin-top: 30px;
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .grid-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 22px;
+        box-shadow: 0 10px 28px rgba(15, 34, 62, 0.05);
+      }
+
+      .icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: #eaf2ff;
+        margin-bottom: 14px;
+      }
+
+      .feature {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .mini-ui {
+        background: var(--panel-soft);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px;
+        min-height: 140px;
+      }
+
+      .timeline {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .timeline span {
+        flex: 1;
+        text-align: center;
+        font-size: 11px;
+        padding-top: 16px;
+        position: relative;
+      }
+
+      .timeline span::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background: #7ca8ff;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 32px;
+      }
+
+      .step {
+        position: relative;
+        text-align: center;
+      }
+
+      .step .n {
+        width: 42px;
+        height: 42px;
+        margin: 0 auto 12px;
+        border-radius: 12px;
+        background: #e7f0ff;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: var(--navy);
+      }
+
+      .step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -10px;
+        top: 20px;
+        width: 20px;
+        border-top: 2px dashed #bad0fb;
+      }
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 22px 0;
+      }
+
+      .tab {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      .tab.active {
+        background: var(--navy);
+        color: #fff;
+        border-color: var(--navy);
+      }
+
+      .preview {
+        min-height: 260px;
+      }
+
+      .dark-cta {
+        background: linear-gradient(145deg, #0f223f, #0c1a31);
+        color: #fff;
+        border-radius: 24px;
+        padding: 56px 40px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+
+      .dark-cta p {
+        color: #b9c7e8;
+        margin: 12px auto 24px;
+        max-width: 620px;
+      }
+
+      footer {
+        padding: 55px 0;
+      }
+
+      .foot-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .foot-grid h4 {
+        margin-bottom: 8px;
+      }
+
+      .foot-grid p {
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      [data-reveal].visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1024px) {
+        .hero,
+        .feature,
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .grid-4 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid-5 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .step::after {
+          display: none;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .nav-links {
+          display: none;
+        }
+
+        .trust-list,
+        .grid-4,
+        .grid-5,
+        .steps,
+        .foot-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section {
+          padding: 70px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav-wrap">
+      <nav class="container">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <span>E-Global</span>
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#workspace">Workspace</a>
+          <a href="#demo">Demo</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="btn btn-primary">Request Demo</button>
+      </nav>
+    </div>
+
+    <main>
+      <section class="section container hero" id="demo">
+        <div data-reveal>
+          <span class="badge">Buyer Trust Workspace for Exporters</span>
+          <h1>One workspace for exporter credibility and buyer communication</h1>
+          <p>
+            E-Global helps Chinese exporters present trust information, manage overseas buyer
+            communication, and share structured order updates in one professional workspace.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary">Request Demo</button>
+            <p class="micro">Designed for Chinese SME exporters, trading companies, and small factories.</p>
+          </div>
+          <div class="trust-list">
+            <div class="trust-item"><span class="dot"></span>Professional Trust Profile</div>
+            <div class="trust-item"><span class="dot"></span>Shared Buyer Workspace</div>
+            <div class="trust-item"><span class="dot"></span>Structured Order Updates</div>
+            <div class="trust-item"><span class="dot"></span>Centralized Communication</div>
+          </div>
+        </div>
+
+        <div class="mockup" data-reveal>
+          <div class="workspace">
+            <aside class="panel">
+              <div class="sidebar-item active">Trust Profile</div>
+              <div class="sidebar-item">Buyers</div>
+              <div class="sidebar-item">Orders</div>
+              <div class="sidebar-item">Documents</div>
+              <div class="sidebar-item">Messages</div>
+              <div class="sidebar-item">Settings</div>
+            </aside>
+            <section class="panel" id="workspace">
+              <h3>Buyer Workspace</h3>
+              <div class="status-row"><span>Buyer: Nordline Home GmbH</span><span>Order: In Production</span></div>
+              <div class="status-row"><span>Production Progress</span><span>68%</span></div>
+              <div class="mile-grid">
+                <div class="mile"><strong>Quotation Confirmed</strong>Approved by buyer</div>
+                <div class="mile"><strong>Sample Approved</strong>Color card signed</div>
+                <div class="mile"><strong>Production Started</strong>Line 2 active</div>
+                <div class="mile"><strong>Quality Check</strong>Scheduled Friday</div>
+                <div class="mile"><strong>Shipment Booked</strong>Vessel pending</div>
+                <div class="mile"><strong>Delivered</strong>Awaiting completion</div>
+              </div>
+            </section>
+            <aside class="panel activity">
+              <h4>Recent Activity</h4>
+              <div class="item">Inspection report uploaded</div>
+              <div class="item">Buyer viewed shipment update</div>
+              <div class="item">Production photos shared</div>
+              <div class="item">Message from buyer</div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" data-reveal>
+        <h2 class="section-title">Export communication is fragmented</h2>
+        <p class="section-subtitle">
+          Small exporters manage international buyers across disconnected tools and manual updates.
+        </p>
+        <div class="grid-4">
+          <article class="card"><div class="icon"></div><h3>Trust Proof Requests</h3><p>Buyers ask for trust proof before placing orders.</p></article>
+          <article class="card"><div class="icon"></div><h3>Scattered Channels</h3><p>Communication is split across WhatsApp, WeChat, email, and spreadsheets.</p></article>
+          <article class="card"><div class="icon"></div><h3>Manual Progress Sharing</h3><p>Order updates rely on screenshots and repeated messages.</p></article>
+          <article class="card"><div class="icon"></div><h3>Unstructured Impression</h3><p>Small exporters often look less professional to overseas buyers.</p></article>
+        </div>
+      </section>
+
+      <section class="section container" id="features" data-reveal>
+        <h2 class="section-title">A lightweight buyer-facing workspace for export collaboration</h2>
+        <div class="feature">
+          <article class="card"><h3>Trust Profile</h3><p>A lightweight exporter profile similar to Linktree, including company intro, categories, certifications, photos, export markets, and contacts.</p><div class="mini-ui"></div></article>
+          <article class="card"><h3>Buyer Workspace</h3><p>A shared workspace for buyer communication, shared updates, milestone visibility, and files during orders.</p><div class="mini-ui"></div></article>
+          <article class="card"><h3>Structured Order Updates</h3><p>Simple milestone communication for quotation, sample confirmation, production, quality check, shipment, and delivery.</p><div class="mini-ui"><div class="timeline"><span>Quotation</span><span>Sample</span><span>Production</span><span>QC</span><span>Shipment</span><span>Delivery</span></div></div></article>
+          <article class="card"><h3>Centralized Communication</h3><p>Keep messages, updates, documents, and order notes in one organized place.</p><div class="mini-ui"></div></article>
+          <article class="card"><h3>Document Sharing</h3><p>Share invoices, certificates, reports, packing lists, and shipping docs professionally.</p><div class="mini-ui"></div></article>
+        </div>
+      </section>
+
+      <section class="section container" data-reveal>
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+          <article class="card step"><div class="n">1</div><h3>Create your exporter trust profile</h3></article>
+          <article class="card step"><div class="n">2</div><h3>Invite buyers into a shared workspace</h3></article>
+          <article class="card step"><div class="n">3</div><h3>Share updates, milestones, and files</h3></article>
+          <article class="card step"><div class="n">4</div><h3>Manage communication in one structured place</h3></article>
+        </div>
+      </section>
+
+      <section class="section container" data-reveal>
+        <h2 class="section-title">Designed for Chinese SME exporters</h2>
+        <div class="grid-4">
+          <article class="card"><h3>Small factories</h3></article>
+          <article class="card"><h3>Trading companies</h3></article>
+          <article class="card"><h3>Export SOHO entrepreneurs</h3></article>
+          <article class="card"><h3>Export teams without digital systems</h3></article>
+        </div>
+        <p style="margin-top:16px">Especially for exporters relying on WhatsApp, Alibaba, LinkedIn, email, and trade fairs.</p>
+      </section>
+
+      <section class="section container" data-reveal>
+        <h2 class="section-title">Inside the Workspace</h2>
+        <div class="tabs" id="tabs">
+          <button class="tab active" data-tab="profile">Trust Profile</button>
+          <button class="tab" data-tab="buyer">Buyer Workspace</button>
+          <button class="tab" data-tab="timeline">Order Timeline</button>
+          <button class="tab" data-tab="docs">Documents</button>
+          <button class="tab" data-tab="messages">Messages</button>
+        </div>
+        <div class="card preview" id="preview"></div>
+      </section>
+
+      <section class="section container" id="contact" data-reveal>
+        <div class="dark-cta">
+          <h2 class="section-title">Turn fragmented export communication into buyer trust.</h2>
+          <p>Professional communication and structured visibility for modern exporters.</p>
+          <button class="btn btn-primary">Request Demo</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container">
+      <div class="foot-grid">
+        <div><h4>Product</h4><p>E-Global Workspace</p></div>
+        <div><h4>Features</h4><p>Trust Profile</p><p>Order Updates</p></div>
+        <div><h4>Contact</h4><p>hello@eglobal.workspace</p></div>
+        <div><h4>Privacy</h4><p>Privacy Policy</p></div>
+      </div>
+    </footer>
+
+    <script>
+      const preview = document.getElementById("preview");
+      const tabs = document.querySelectorAll(".tab");
+      const content = {
+        profile:
+          "<h3>Exporter Trust Profile</h3><p>Clean buyer-facing profile with company overview, certifications, product categories, export markets, and direct contact channels.</p><div class='mini-ui'></div>",
+        buyer:
+          "<h3>Shared Buyer Workspace</h3><p>Dedicated collaboration area for each buyer with order notes, milestone status, shared files, and latest communication.</p><div class='mini-ui'></div>",
+        timeline:
+          "<h3>Structured Order Timeline</h3><p>Each order follows clear milestone stages from quotation to delivery with visible progress and timestamps.</p><div class='mini-ui'><div class='timeline'><span>Quote</span><span>Sample</span><span>Production</span><span>QC</span><span>Shipment</span><span>Delivery</span></div></div>",
+        docs:
+          "<h3>Professional Document Sharing</h3><p>Organize invoices, inspection reports, certificates, and shipping documents in one buyer-facing record.</p><div class='mini-ui'></div>",
+        messages:
+          "<h3>Centralized Communication</h3><p>Keep buyer discussions, confirmations, file comments, and timeline updates in one structured feed.</p><div class='mini-ui'></div>"
+      };
+
+      preview.innerHTML = content.profile;
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+          preview.innerHTML = content[tab.dataset.tab];
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      document.querySelectorAll("[data-reveal]").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
