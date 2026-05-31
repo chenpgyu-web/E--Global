@@ -3,15 +3,8 @@ import { join } from "node:path";
 
 export default async function HomePage() {
   const html = await readFile(join(process.cwd(), "index.html"), "utf8");
+  const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  const bodyContent = bodyMatch ? bodyMatch[1] : html;
 
-  return (
-    <main className="landing-shell">
-      <iframe
-        className="landing-frame"
-        srcDoc={html}
-        title="E-Global Landing Page"
-        sandbox="allow-scripts allow-same-origin"
-      />
-    </main>
-  );
+  return <div dangerouslySetInnerHTML={{ __html: bodyContent }} />;
 }
