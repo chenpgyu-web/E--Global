@@ -1,0 +1,19 @@
+{
+  "name": "e-global",
+  "version": "1.0.0",
+  "description": "E-Global is a lightweight Buyer Trust Workspace for Chinese SME exporters to centralize buyer communication, share structured order visibility, and improve trust.",
+  "scripts": {
+    "dev": "serve .",
+    "build": "echo 'Static site - no build needed'",
+    "lint": "echo 'No linter configured'"
+  },
+  "keywords": ["export", "trust", "workspace", "buyer"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.14"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
